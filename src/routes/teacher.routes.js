@@ -1,6 +1,22 @@
+import { Router } from 'express';
+import {
+  showApiProfesor,
+  showApiProfesorId,
+  createApiProfesor,
+  updateApiProfesor,
+  deleteApiProfesor
+} from '../controllers/teacher.controller.js';
+
+const router = Router();
+const apiName = '/profesor';
+
+router.route(apiName)
+  .get(showApiProfesor)
+  .post(createApiProfesor);
+
 router.route(`${apiName}/:id`)
-  .get(verifyToken, showApiProfesorId)  // Obtener profesor por ID
-  .put(verifyToken, updateApiProfesor)  // Actualizar profesor por ID
-  .delete(verifyToken, deleteApiProfesor); // Eliminar profesor por ID
+  .get(showApiProfesorId)
+  .put(updateApiProfesor)
+  .delete(deleteApiProfesor);
 
 export default router;

@@ -1,3 +1,27 @@
+import { connect } from '../config/db/connect.js';
+
+// Obtener todos los cursos
+export const showApiCurso = async (req, res) => {
+  try {
+    let sqlQuery = "SELECT * FROM Curso";
+    const [result] = await connect.query(sqlQuery);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener cursos", details: error.message });
+  }
+};
+
+// Obtener curso por ID
+export const showApiCursoId = async (req, res) => {
+  try {
+    const [result] = await connect.query('SELECT * FROM Curso WHERE id = ?', [req.params.id]);
+    if (result.length === 0) return res.status(404).json({ error: "Curso no encontrado" });
+    res.status(200).json(result[0]);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener curso", details: error.message });
+  }
+};
+
 // Crear un nuevo curso
 export const createApiCurso = async (req, res) => {
   try {

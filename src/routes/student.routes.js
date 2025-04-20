@@ -1,6 +1,22 @@
+import { Router } from 'express';
+import {
+  showApiEstudiante,
+  showApiEstudianteId,
+  createApiEstudiante,
+  updateApiEstudiante,
+  deleteApiEstudiante
+} from '../controllers/student.controller.js';
+
+const router = Router();
+const apiName = '/estudiante';
+
+router.route(apiName)
+  .get(showApiEstudiante)
+  .post(createApiEstudiante);
+
 router.route(`${apiName}/:id`)
-  .get(verifyToken, showApiEstudianteId)  // Obtener estudiante por ID
-  .put(verifyToken, updateApiEstudiante)  // Actualizar estudiante por ID
-  .delete(verifyToken, deleteApiEstudiante); // Eliminar estudiante por ID
+  .get(showApiEstudianteId)
+  .put(updateApiEstudiante)
+  .delete(deleteApiEstudiante);
 
 export default router;

@@ -1,3 +1,13 @@
+import express from 'express';
+import personRoutes from '../routes/person.routes.js';
+import studentRoutes from '../routes/student.routes.js';
+import teacherRoutes from '../routes/teacher.routes.js';
+import courseRoutes from '../routes/course.routes.js';
+
+const app = express();
+// Middleware to handle JSON
+app.use(express.json());
+
 // Usar las rutas con sus propios prefijos
 app.use('/', personRoutes);
 app.use('/', studentRoutes);

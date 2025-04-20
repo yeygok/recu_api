@@ -1,3 +1,27 @@
+import { connect } from '../config/db/connect.js';
+
+// Obtener todos los estudiantes
+export const showApiEstudiante = async (req, res) => {
+  try {
+    let sqlQuery = "SELECT * FROM Estudiante";
+    const [result] = await connect.query(sqlQuery);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener estudiantes", details: error.message });
+  }
+};
+
+// Obtener estudiante por ID
+export const showApiEstudianteId = async (req, res) => {
+  try {
+    const [result] = await connect.query('SELECT * FROM Estudiante WHERE id = ?', [req.params.id]);
+    if (result.length === 0) return res.status(404).json({ error: "Estudiante no encontrado" });
+    res.status(200).json(result[0]);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener estudiante", details: error.message });
+  }
+};
+
 // Crear un nuevo estudiante
 export const createApiEstudiante = async (req, res) => {
   try {

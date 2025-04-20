@@ -1,3 +1,27 @@
+import { connect } from '../config/db/connect.js';
+
+// Obtener todos los profesores
+export const showApiProfesor = async (req, res) => {
+  try {
+    let sqlQuery = "SELECT * FROM Profesor";
+    const [result] = await connect.query(sqlQuery);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener profesores", details: error.message });
+  }
+};
+
+// Obtener profesor por ID
+export const showApiProfesorId = async (req, res) => {
+  try {
+    const [result] = await connect.query('SELECT * FROM Profesor WHERE id = ?', [req.params.id]);
+    if (result.length === 0) return res.status(404).json({ error: "Profesor no encontrado" });
+    res.status(200).json(result[0]);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener profesor", details: error.message });
+  }
+};
+
 // Crear un nuevo profesor
 export const createApiProfesor = async (req, res) => {
   try {
