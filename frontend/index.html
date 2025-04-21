@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CRUD Estudiantes</title>
+  <title>CRUD Estudiantes y Cursos y Profesores</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -30,6 +30,60 @@
       </thead>
       <tbody>
         <!-- Los estudiantes se cargarán aquí dinámicamente -->
+      </tbody>
+    </table>
+  </section>
+
+  <h1>Gestión de Cursos</h1>
+
+  <section id="curso-section">
+    <form id="curso-form">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required />
+      <label for="profesor_id">ID Profesor:</label>
+      <input type="number" id="profesor_id" name="profesor_id" required />
+      <button type="submit">Guardar</button>
+      <button type="button" id="cancel-curso-edit" style="display:none;">Cancelar</button>
+    </form>
+
+    <table id="cursos-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>ID Profesor</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Los cursos se cargarán aquí dinámicamente -->
+      </tbody>
+    </table>
+  </section>
+
+  <h1>Gestión de Profesores</h1>
+
+  <section id="profesor-section">
+    <form id="profesor-form">
+      <label for="persona_id_profesor">ID Persona:</label>
+      <input type="number" id="persona_id_profesor" name="persona_id_profesor" required />
+      <label for="especialidad">Especialidad (opcional):</label>
+      <input type="text" id="especialidad" name="especialidad" />
+      <button type="submit">Guardar</button>
+      <button type="button" id="cancel-profesor-edit" style="display:none;">Cancelar</button>
+    </form>
+
+    <table id="profesores-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ID Persona</th>
+          <th>Especialidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Los profesores se cargarán aquí dinámicamente -->
       </tbody>
     </table>
   </section>
