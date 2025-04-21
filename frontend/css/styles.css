@@ -45,6 +45,15 @@ button:hover {
   background-color: #3498db;
 }
 
+#cancel-estudiante-edit {
+  background-color: #6c757d;
+  margin-left: 10px;
+}
+
+#cancel-estudiante-edit:hover {
+  background-color: #5a6268;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -69,7 +78,29 @@ tr:hover {
   background-color: #f1f1f1;
 }
 
-#login-message {
-  margin-top: 10px;
-  color: red;
+.edit-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
 }
